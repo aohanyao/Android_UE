@@ -9,7 +9,8 @@ Android  UE 效果的实现
 ![](http://obh9jd33g.bkt.clouddn.com/%E5%B1%82%E5%8F%A0%E5%8D%A1%E7%89%878.gif)
 
 ## [HorizontalLoopView 水平滑动的View](https://github.com/aohanyao/HorizontalLoopView)
-![HorizontalLoopView](http://olrt5mymy.bkt.clouddn.com/screens_hots.gif)
+
+![HorizontalLoopView](http://obh9jd33g.bkt.clouddn.com/horizontal-loop-view.gif)
 
 ## [BouncingJellyView 仿MIUI果冻视图](https://github.com/aohanyao/BouncingJelly)
 
