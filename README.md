@@ -1,6 +1,10 @@
 # Android_UE
 Android  UE 效果的实现
 
+## 
+[高斯模糊的菜单效果图](https://github.com/aohanyao/Android_UE/tree/master/BlurMenu)
+![高斯模糊的菜单效果图](image/高斯模糊的菜单效果图.gif)
+
 ## [CardSwipeConcept 画廊卡片](https://github.com/aohanyao/CardSwipeConcept)
 ![Card Swipe Concept](image/CardSwipeConcept.gif)
 
