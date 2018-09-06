@@ -1,0 +1,80 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="AppTheme.ToolbarHeight">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="toolbarNavigationButtonStyle">@style/mToolbarNavigationButtonStyle</item>
+        <!--NavigationIcon的宽度-->
+        <item name="toolbarStyle">@style/mToolbarStyle</item>
+    </style>
+
+
+    <style name="mToolbarNavigationButtonStyle" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="android:minWidth">0dp</item>
+    </style>
+    <style name="DialogTextStyle" parent="AppTheme.ToolbarHeight">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorAccent">@color/white</item>
+    </style>
+    <style name="mToolbarStyle" parent="Widget.AppCompat.Toolbar">
+        <item name="contentInsetStart">4dp</item>
+        <item name="contentInsetStartWithNavigation">4dp</item>
+        <!--使自定义view可以贴左右的边，多数版本的系统不要下面两句也可以，但少量版本必须加下面的两句-->
+
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingRight">0dp</item>
+        <item name="android:minHeight">44dp</item>
+        <item name="android:layout_height">44dp</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+    <style name="MainMenuLinearStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="MainMenuImageStyle">
+        <item name="android:layout_width">23dp</item>
+        <item name="android:layout_height">21dp</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
+    <style name="MainMenuTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="ToolBarTitleStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:background">@null</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_centerInParent">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="AppBarLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">44dp</item>
+        <item name="android:theme">@style/AppTheme.AppBarOverlay</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+</resources>

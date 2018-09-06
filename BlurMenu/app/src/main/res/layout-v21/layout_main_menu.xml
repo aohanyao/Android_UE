@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="#00000000"
+                android:clipChildren="false"
+                android:gravity="bottom"
+                >
+    <!--tools:showIn="@layout/activity_main"-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dip"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/rl_menu_home"
+            style="@style/MainMenuLinearStyle">
+
+            <ImageView
+                android:id="@+id/iv_menu_home"
+                style="@style/MainMenuImageStyle"
+                android:src="@drawable/menu_home_select"/>
+
+            <TextView
+                android:id="@+id/tv_menu_home"
+                style="@style/MainMenuTextStyle"
+                android:layout_below="@id/iv_menu_home"
+                android:text="主页"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_menu_project"
+            style="@style/MainMenuLinearStyle">
+
+            <ImageView
+                android:id="@+id/iv_menu_project"
+                style="@style/MainMenuImageStyle"
+                android:src="@drawable/menu_project_select"/>
+
+            <TextView
+                android:id="@+id/tv_menu_project"
+                style="@style/MainMenuTextStyle"
+                android:layout_below="@id/iv_menu_project"
+                android:text="项目"/>
+        </RelativeLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_all_menu"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="5dp"
+            android:background="?android:selectableItemBackground"
+            android:rotation="45"
+            android:padding="15dp"
+            app:backgroundTint="@color/white"
+            android:src="@drawable/ic_clear"
+            app:elevation="3dp"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_menu_client"
+            style="@style/MainMenuLinearStyle">
+
+            <ImageView
+                android:id="@+id/iv_menu_client"
+                style="@style/MainMenuImageStyle"
+                android:src="@drawable/menu_client_select"/>
+
+            <TextView
+                android:id="@+id/tv_menu_client"
+                style="@style/MainMenuTextStyle"
+                android:layout_below="@id/iv_menu_client"
+                android:text="招商"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_menu_my"
+            style="@style/MainMenuLinearStyle">
+
+            <ImageView
+                android:id="@+id/iv_menu_my"
+                style="@style/MainMenuImageStyle"
+                android:src="@drawable/menu_my_select"/>
+
+            <TextView
+                android:id="@+id/tv_main_home"
+                style="@style/MainMenuTextStyle"
+                android:layout_below="@id/iv_menu_my"
+                android:text="我的"/>
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

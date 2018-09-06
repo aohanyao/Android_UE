@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_menu_warp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentBottom="true"
+    android:layout_centerHorizontal="true"
+    android:gravity="bottom|center_horizontal"
+    tools:showIn="@layout/layout_main_more_menu">
+
+
+
+    <TextView
+        android:id="@+id/tv_new_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="28dp"
+        android:clickable="true"
+        android:drawablePadding="@dimen/dp_8"
+        android:drawableTop="@mipmap/new_action_icon"
+        android:gravity="center_horizontal"
+        android:paddingBottom="@dimen/more_window_item_margin"
+        android:text="新建行动"
+        android:textColor="#666"/>
+
+    <TextView
+        android:id="@+id/tv_new_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_toRightOf="@+id/tv_new_action"
+        android:clickable="true"
+        android:drawablePadding="@dimen/dp_8"
+        android:drawableTop="@mipmap/new_order_icon"
+        android:gravity="center_horizontal"
+        android:paddingBottom="@dimen/more_window_item_margin"
+        android:text="新建订单"
+        android:textColor="#666"/>
+
+    <TextView
+        android:id="@+id/tv_client_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="28dp"
+        android:layout_toRightOf="@+id/tv_new_order"
+        android:clickable="true"
+        android:drawablePadding="@dimen/dp_8"
+        android:drawableTop="@mipmap/client_input_icon"
+        android:gravity="center_horizontal"
+        android:paddingBottom="@dimen/more_window_item_margin"
+        android:text="客户录入"
+        android:textColor="#666"/>
+
+    <TextView
+        android:id="@+id/tv_ranking_listcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_new_action"
+        android:layout_marginRight="28dp"
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        android:drawablePadding="@dimen/dp_8"
+        android:drawableTop="@mipmap/ranking_listcon"
+        android:gravity="center_horizontal"
+        android:paddingBottom="@dimen/more_window_item_margin"
+        android:text="琅琊榜"
+        android:textColor="#666"/>
+
+    <TextView
+        android:id="@+id/tv_import_mail_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_new_order"
+        android:layout_marginLeft="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/tv_ranking_listcon"
+        android:clickable="true"
+        android:drawablePadding="@dimen/dp_8"
+        android:drawableTop="@mipmap/import_mail_icon"
+        android:gravity="center_horizontal"
+        android:paddingBottom="@dimen/more_window_item_margin"
+        android:text="通讯录导入"
+        android:textColor="#666"/>
+
+    <TextView
+        android:id="@+id/tv_scan_card_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_client_input"
+        android:layout_marginBottom="140dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/tv_import_mail_icon"
+        android:clickable="true"
+        android:drawablePadding="@dimen/dp_8"
+        android:drawableTop="@mipmap/scan_card_icon"
+        android:gravity="center_horizontal"
+        android:paddingBottom="@dimen/more_window_item_margin"
+        android:text="扫名片"
+        android:textColor="#666"/>
+
+
+</RelativeLayout>

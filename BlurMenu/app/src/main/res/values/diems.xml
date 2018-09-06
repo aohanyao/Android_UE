@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="more_window_item_margin">12dp</dimen>
+    <dimen name="dp_8">8dp</dimen>
+
+</resources>
