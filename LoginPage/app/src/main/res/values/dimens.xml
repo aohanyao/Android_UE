@@ -1,0 +1,12 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="margin">16dp</dimen>
+    <dimen name="margin_party">16dp</dimen>
+    <dimen name="sp_12">12sp</dimen>
+    <dimen name="dp_12">12dp</dimen>
+    <dimen name="dp_14">14dp</dimen>
+    <dimen name="sp_14">14sp</dimen>
+    <dimen name="sp_15">15sp</dimen>
+    <dimen name="party_secondary_text_size">12sp</dimen>
+
+</resources>

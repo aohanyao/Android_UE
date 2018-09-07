@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="party_primary">#F44336</color>
+    <color name="party_primary_dark">#D32F2F</color>
+    <color name="party_primary_light">#FFCDD2</color>
+    <color name="party_accent">#FF5252</color>
+    <color name="party_primary_text">#212121</color>
+    <color name="party_secondary_text_color">#8a8a8a</color>
+    <color name="party_icons">#FFFFFF</color>
+    <color name="party_divider">#BDBDBD</color>
+    <color name="party_main_text_color">#424242</color>
+
+    <color name="background_party">#f5f5f5</color>
+    <color name="background_fafafa_party">#f5f5f5</color>
+    <color name="background_f5_party">#f5f5f5</color>
+    <color name="action_text_color_party">#d32f2f</color>
+    <color name="shadow_color_party">#0ab8b8b8</color>
+
+</resources>
