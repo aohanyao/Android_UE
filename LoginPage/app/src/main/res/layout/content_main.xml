@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:gravity="center"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <!--登陆AXML-->
+
+
+    <LinearLayout
+        android:id="@+id/llLogin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivLoginTopImage"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/login_top_bg" />
+        </LinearLayout>
+
+
+        <TextView
+            style="@style/BaseSecondaryTextStyle"
+            android:layout_marginLeft="@dimen/margin_party"
+            android:layout_marginTop="20dp"
+            android:text="手机号码"
+            android:textSize="@dimen/sp_14" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/margin_party"
+            android:paddingRight="@dimen/margin_party">
+
+            <!-- <TextView
+                 style="@style/BaseMainTextStyleParty"
+                 android:text="+86"
+                 android:textSize="18sp" />
+
+             <View
+                 android:layout_width="1dp"
+                 android:layout_height="@dimen/dp_16"
+                 android:layout_marginLeft="@dimen/margin_party"
+                 android:background="#dedede" />-->
+
+            <com.jc.example.ui.ClearEditText
+                android:id="@+id/etPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:background="@null"
+                android:hint="请输入手机号码"
+                android:singleLine="true"
+                android:textSize="@dimen/sp_15" />
+
+            <requestFocus />
+
+
+        </LinearLayout>
+
+        <View style="@style/ReportLineStyle" />
+
+        <TextView
+            style="@style/BaseSecondaryTextStyle"
+            android:layout_marginLeft="@dimen/margin_party"
+            android:layout_marginTop="@dimen/margin_party"
+            android:text="密码"
+            android:textSize="@dimen/sp_14" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.jc.example.ui.ClearEditText
+                android:id="@+id/etPassword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_party"
+                android:layout_marginLeft="@dimen/margin_party"
+                android:layout_marginRight="@dimen/margin_party"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="请输入密码"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:textSize="@dimen/sp_15" />
+
+            <LinearLayout
+                android:id="@+id/llSwitchPass"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dp_12"
+                android:paddingRight="@dimen/dp_14">
+
+                <ImageView
+                    android:id="@+id/ivSwitchPass"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/password_icon_selector" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View style="@style/ReportLineStyle" />
+
+        <TextView
+            android:id="@+id/tvLogin"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:textColor="#fff"
+            android:layout_marginRight="@dimen/margin_party"
+            android:layout_marginLeft="@dimen/margin_party"
+            android:background="@drawable/button_commit_round_selector"
+            android:gravity="center"
+            android:text="登陆"
+            android:textSize="15sp" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvForgetPass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_party"
+                android:text="忘记密码"
+                android:textSize="@dimen/sp_12" />
+
+            <TextView
+                android:id="@+id/tvRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/margin_party"
+                android:padding="@dimen/margin_party"
+                android:text="用户注册"
+                android:textSize="@dimen/sp_12" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <!--</ScrollView>-->
+</LinearLayout>
