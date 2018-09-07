@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
@@ -54,9 +55,9 @@ public class MoreMenuHelper {
      * 显示更多窗口的
      */
     public void showMoreWindow() {
-//        rlMoreMenuRoot.setBackgroundDrawable(new BitmapDrawable(mActivity.getResources(), blur()));
+        rlMoreMenuRoot.setBackgroundDrawable(new BitmapDrawable(mActivity.getResources(), blur()));
         rlMoreMenuRoot.setVisibility(View.VISIBLE);
-//        rotationActionMenu(45, 180);
+        rotationActionMenu(45, 180);
         showAnimation();
     }
 
@@ -75,7 +76,7 @@ public class MoreMenuHelper {
 
         mBitmap = ScreenUtils.snapShotWithStatusBar(mActivity);
 
-        float scaleFactor = 8;//图片缩放比例；
+        float scaleFactor = 15;//图片缩放比例；
         float radius = 3;//模糊程度
         int width = mBitmap.getWidth();
         int height = mBitmap.getHeight();
@@ -135,6 +136,12 @@ public class MoreMenuHelper {
                     kickAnimator.setDuration(100);
                     // 设置差值器
                     fadeAnim.setEvaluator(kickAnimator);
+                    fadeAnim.addListener(new BaseAnimatorListener() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            child.setLayerType(View.LAYER_TYPE_NONE, null);
+                        }
+                    });
                     //开始动画
                     fadeAnim.start();
                 }

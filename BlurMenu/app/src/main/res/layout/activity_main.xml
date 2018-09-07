@@ -6,6 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:scaleType="fitXY"
+        android:layout_width="match_parent"
+        android:src="@mipmap/image_loading"
+        android:layout_height="200dp" />
+
+
 
     <TextView
         android:layout_width="match_parent"

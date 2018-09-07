@@ -84,7 +84,7 @@ public class ScreenUtils {
         View view = activity.getWindow().getDecorView();
         view.setDrawingCacheEnabled(true);
         view.buildDrawingCache();
-        Bitmap bmp = view.getDrawingCache();
+        Bitmap bmp = view.getDrawingCache(true);
         int width = getScreenWidth(activity);
         int height = getScreenHeight(activity);
         Bitmap bp = null;
