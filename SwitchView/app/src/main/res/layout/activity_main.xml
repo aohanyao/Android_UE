@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context=".MainActivity">
+
+    <com.jc.view.ui.SwitchView
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:text="Hello World!"
+        app:off_background_color="@color/colorPrimaryDark"
+        app:on_background_color="@color/colorPrimaryDark"
+        app:off_text="开"
+        app:text_size="16sp"
+        app:on_text="关"
+        app:off_text_color="#000"
+        app:on_text_color="#fff"
+        app:background_color="#cdcdcd"/>
+
+</LinearLayout>
