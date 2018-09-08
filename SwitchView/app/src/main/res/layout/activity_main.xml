@@ -4,20 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <com.jc.view.ui.SwitchView
         android:layout_width="150dp"
         android:layout_height="48dp"
-        android:text="Hello World!"
-        app:off_background_color="@color/colorPrimaryDark"
-        app:on_background_color="@color/colorPrimaryDark"
-        app:off_text="开"
-        app:text_size="16sp"
-        app:on_text="关"
+        app:background_color="#dedede"
+        app:off_background_color="#03a4f9"
+        app:off_text="关"
         app:off_text_color="#000"
+        app:on_background_color="@color/colorPrimary"
+        app:on_text="开"
         app:on_text_color="#fff"
-        app:background_color="#cdcdcd"/>
+        app:radius="28dp"
+        app:text_size="16sp" />
+
+    <com.jc.view.ui.SwitchView
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        app:background_color="#dedede"
+        app:off_background_color="@color/colorPrimary"
+        app:off_text="否"
+        app:off_text_color="#000"
+        app:on_background_color="#03a4f9"
+        app:on_text="是"
+        app:on_text_color="#fff"
+        app:radius="14dp"
+        app:front_ground_width="30dp"
+        app:text_size="16sp" />
+
+    <com.jc.view.ui.SwitchView
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        app:background_color="#dedede"
+        app:off_background_color="#03a4f9"
+        app:off_text="关"
+        app:off_text_color="#000"
+        app:on_background_color="@color/colorPrimary"
+        app:on_text="开"
+        app:on_text_color="#fff"
+        app:text_size="16sp" />
 
 </LinearLayout>

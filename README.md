@@ -1,6 +1,8 @@
 # Android_UE
 Android  UE 效果的实现
 
+## [SwitchView](https://github.com/aohanyao/Android_UE/tree/master/SwitchView)
+![SwitchView](image/switchView完成预览.gif)
 ## 
 [高斯模糊的菜单效果图](https://github.com/aohanyao/Android_UE/tree/master/BlurMenu)
 ![高斯模糊的菜单效果图](image/高斯模糊的菜单效果图.gif)

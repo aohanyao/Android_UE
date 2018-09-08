@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="SwitchView">
+        <!--关闭文字-->
         <attr name="off_text" format="string" />
+        <!--打开文字-->
         <attr name="on_text" format="string" />
+        <!--打开文字颜色-->
         <attr name="on_text_color" format="color" />
+        <!--关闭文字颜色-->
         <attr name="off_text_color" format="color" />
+        <!--无状态下的背景颜色-->
         <attr name="background_color" format="color" />
+        <!--打开的背景颜色-->
         <attr name="on_background_color" format="color" />
+        <!--关闭的背景颜色-->
         <attr name="off_background_color" format="color" />
+        <!--字体大小-->
         <attr name="text_size" format="dimension" />
+        <!--圆角-->
         <attr name="radius" format="dimension" />
+        <!--前面那个按钮的长度-->
         <attr name="front_ground_width" format="dimension" />
     </declare-styleable>
 </resources>

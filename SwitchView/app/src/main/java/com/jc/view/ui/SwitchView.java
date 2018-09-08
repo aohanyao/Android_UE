@@ -10,7 +10,6 @@ import android.graphics.RectF;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
@@ -94,11 +93,10 @@ public class SwitchView extends View implements View.OnClickListener {
     /**
      * 初始化属性
      *
-     * @param context
-     * @param attrs
+     * @param context 上下午
+     * @param attrs   属性
      */
     private void initAttr(Context context, AttributeSet attrs) {
-
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SwitchView);
         //关闭文字
         offText = typedArray.getString(R.styleable.SwitchView_off_text);
@@ -143,8 +141,9 @@ public class SwitchView extends View implements View.OnClickListener {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        //获取宽度和高度
+        //View的宽度
         mWidth = w;
+        //View的高度
         mHeight = h;
         //高度的中间
         mCenterHeight = h / 2;
@@ -153,13 +152,14 @@ public class SwitchView extends View implements View.OnClickListener {
         //创建背景矩形
         mBackgroundRectf = new RectF(0, 0, mWidth, mHeight);
         //打开的矩形
-        mOnRectf = new RectF(0, 0, mFrontGroundWidth == 0 ? mCenterWidth : mFrontGroundWidth, mHeight);
+        mOnRectf = new RectF(0, 0, mCenterWidth, mHeight);
         //文字的中间高度
         Rect mRect = new Rect();
         mPaint.setTextSize(textSize);
+        // 测量打开文字
         mPaint.getTextBounds(onText, 0, onText.length(), mRect);
         onTextCenterHeight = mRect.height() * 0.4f;
-
+        //测量关闭文字
         mPaint.getTextBounds(offText, 0, offText.length(), mRect);
         offTextCenterHeight = mRect.height() * 0.4f;
     }
@@ -167,21 +167,20 @@ public class SwitchView extends View implements View.OnClickListener {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        //绘制背景矩形
+        // 更改颜色
         mPaint.setColor(mBackgroundColor);
+        // 绘制背景矩形
         canvas.drawRoundRect(mBackgroundRectf, mRadius, mRadius, mPaint);
 
 
-//        float width = mFrontGroundWidth == 0 ? mCenterWidth : mFrontGroundWidth;
-        float width = mCenterWidth;
-
         //当前百分比的宽度
-        int valueWidth = (int) (width * aminValueHundred);
+        int valueWidth = (int) (mCenterWidth * aminValueHundred);
         if (isOn) {
             //打开
-            mOnRectf = new RectF(0 + valueWidth, 0, width + valueWidth, mHeight);
+            mOnRectf = new RectF(0 + valueWidth, 0, mCenterWidth + valueWidth, mHeight);
             mPaint.setColor(mOnBackgroundColor);
             if (aminValueHundred >= 0.5 && !isExchangeColor) {
+                ////置换两种颜色
                 mTempTextColor = offTextColor;
                 offTextColor = onTextColor;
                 onTextColor = mTempTextColor;
@@ -190,13 +189,12 @@ public class SwitchView extends View implements View.OnClickListener {
             if (aminValueHundred >= 0.5) {
                 mPaint.setColor(mOffBackgroundColor);
             }
-        }/*else if (!isOn && aminValueHundred == 1){
-
-        }*/ else {
+        } else {
             //关闭
-            mOnRectf = new RectF(width - valueWidth, 0, mWidth - valueWidth, mHeight);
+            mOnRectf = new RectF(mCenterWidth - valueWidth, 0, mWidth - valueWidth, mHeight);
             mPaint.setColor(mOffBackgroundColor);
             if (aminValueHundred >= 0.5 && !isExchangeColor) {
+                //置换两种颜色
                 mTempTextColor = onTextColor;
                 onTextColor = offTextColor;
                 offTextColor = mTempTextColor;
@@ -223,7 +221,7 @@ public class SwitchView extends View implements View.OnClickListener {
         mPaint.setColor(offTextColor);
         mPaint.setTextSize(textSize);
         canvas.drawText(offText, (mCenterWidth + mCenterWidth / 2) - mPaint.measureText(offText) / 2, mCenterHeight + offTextCenterHeight, mPaint);
-        Log.e(TAG, "onDraw: " + aminValueHundred);
+        // 动画结束
         if (aminValueHundred == 1 && valueAnimator != null) {
             valueAnimator = null;
             isOn = !isOn;
