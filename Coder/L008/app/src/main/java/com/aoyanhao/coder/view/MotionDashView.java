@@ -18,6 +18,10 @@ import com.aoyanhao.coder.utils.Utils;
  * Version:1.0
  * Description: 运动表盘View
  * ChangeLog:
+ *
+ * 使用 getTextBounds 来测量会有点问题，当文字进行变换的时候，
+ * 测量坐标会不准确，应该换做FontMetrics来进行测量。
+ *
  */
 public class MotionDashView extends View {
 
@@ -48,9 +52,11 @@ public class MotionDashView extends View {
 
     private int mSize = 0;
     private float maxCount = 8000;
-    private float nowCount = 800;
+    private int nowCount = 800;
 
     private Animator animator;
+
+    private Paint.FontMetrics fontMetrics;
 
     public MotionDashView(Context context) {
         super(context);
@@ -66,6 +72,11 @@ public class MotionDashView extends View {
 
     {
         mTextBoundRect = new Rect();
+        // 文字的X轴坐标为文字的中心，这样可以减少很多的计算量
+        mPaint.setTextAlign(Paint.Align.CENTER);
+
+        fontMetrics = new Paint.FontMetrics();
+        mPaint.getFontMetrics(fontMetrics);
     }
 
     @Override
@@ -111,17 +122,17 @@ public class MotionDashView extends View {
 
         mText = String.valueOf(nowCount);
 
-        mPaint.setTextAlign(Paint.Align.CENTER);
+
         // 5. 测量文字
-        mPaint.getTextBounds(mText, 0, mText.length(), mTextBoundRect);
-        // 6. 设置文字对齐方式
+//        mPaint.getTextBounds(mText, 0, mText.length(), mTextBoundRect);
 
         mPaint.setStyle(Paint.Style.FILL);
         mPaint.setTextSize(Utils.dp2px(85));
-        // 7. 绘制文字
+        // 6. 绘制文字
         canvas.drawText(mText,
-                (mSize / 2 + PADDING * 2) - (mTextBoundRect.left + mTextBoundRect.right) / 2,
-                (mSize / 2 + PADDING * 2) - (mTextBoundRect.top + mTextBoundRect.bottom) / 2,
+                getWidth() / 2,
+//                (mSize / 2 + PADDING * 2) - (mTextBoundRect.top + mTextBoundRect.bottom) / 2,
+                (mSize / 2 + PADDING * 2) - (fontMetrics.descent + fontMetrics.ascent) / 2,
                 mPaint);
     }
 
