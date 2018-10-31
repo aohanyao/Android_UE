@@ -48,7 +48,7 @@ public class MotionDashView extends View {
      */
     private Rect mTextBoundRect;
 
-    private String mText = "0";
+    private String mText = "ababa";
 
     private int mSize = 0;
     private float maxCount = 8000;
@@ -120,7 +120,7 @@ public class MotionDashView extends View {
         }
         canvas.drawArc(mBoundRectF, -90, sweepAngle, false, mPaint);
 
-        mText = String.valueOf(nowCount);
+//        mText = String.valueOf(nowCount);
 
 
         // 5. 测量文字
