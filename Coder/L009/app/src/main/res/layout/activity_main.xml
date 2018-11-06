@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:textColorHint="#bbbbbb"
             android:textSize="15sp"
+            android:layout_marginBottom="20dp"
             android:hint="用户名" />
 
 
