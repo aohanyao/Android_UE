@@ -1,11 +1,15 @@
 package com.jc.adv.l11.ui;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
+import android.support.v4.view.GestureDetectorCompat;
 import android.util.AttributeSet;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.jc.adv.l11.R;
@@ -17,7 +21,7 @@ import com.jc.adv.l11.util.Utils;
  * Description:
  * ChangeLog:
  */
-public class ScalableView extends View {
+public class ScalableView extends View implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener {
 
     private Bitmap mBitmap;
     private Paint mPaint;
@@ -28,6 +32,16 @@ public class ScalableView extends View {
     private float mMixScale;
     // 最大缩放
     private float mMaxScale;
+
+    private float mOffsetX;
+    private float mOffsetY;
+
+    private boolean isBig = false;
+
+    private GestureDetectorCompat gestureDetectorCompat;
+
+    private float scalePre = 0;
+    private ObjectAnimator scaleAmin;
 
 
     public ScalableView(Context context) {
@@ -49,26 +63,124 @@ public class ScalableView extends View {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
+        // 定义两个中间值
+        mOffsetX = (getWidth() - mImageSize) / 2;
+        mOffsetY = (getHeight() - mImageSize) / 2;
+
         // 两种缩放方式：
         // 1. 左右贴满，上下留白(矮胖)
         // 2. 上下贴满，左右留白(高瘦)
+
+        // 图片的宽除以高大于页面的宽除以高 矮胖
+        if (((float) mBitmap.getWidth() / mBitmap.getHeight()) > (getWidth() / getHeight())) {
+            // 矮胖的情况下，最小就是 View除以bitmap的宽度
+            mMixScale = (float) getWidth() / mBitmap.getWidth();
+            mMaxScale = (float) getHeight() / mBitmap.getHeight();
+        } else {
+            mMaxScale = (float) getWidth() / mBitmap.getWidth();
+            mMixScale = (float) getHeight() / mBitmap.getHeight();
+        }
 
 
     }
 
     private void init() {
         // 图片的大小
-        mImageSize = Utils.dp2px(200);
+        mImageSize = Utils.dp2px(300);
         // 获取图片
         mBitmap = Utils.getDrawableBitmap(getContext(), R.drawable.icon_android_road, mImageSize);
         // 画笔
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+
+        //
+        gestureDetectorCompat = new GestureDetectorCompat(getContext(), this);
+        gestureDetectorCompat.setOnDoubleTapListener(this);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
+        float scale = mMixScale + ((mMaxScale - mMixScale) * scalePre);
+
+        //缩放
+        canvas.scale(scale, scale, getWidth() / 2, getHeight() / 2);
         // 居中绘制 图片
-        canvas.drawBitmap(mBitmap, (getWidth() - mImageSize) / 2, (getHeight() - mImageSize) / 2, mPaint);
+        canvas.drawBitmap(mBitmap, mOffsetX, mOffsetY, mPaint);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return gestureDetectorCompat.onTouchEvent(event);
+    }
+
+    @Override
+    public boolean onSingleTapConfirmed(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public boolean onDoubleTap(MotionEvent e) {
+        isBig = !isBig;
+        if (isBig) {
+            // 从小到大
+            getScaleAmin().start();
+        } else {
+            // 从大到小
+            getScaleAmin().reverse();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean onDoubleTapEvent(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public boolean onDown(MotionEvent e) {
+        // 返回true，代表事件被消费
+        return true;
+    }
+
+    @Override
+    public void onShowPress(MotionEvent e) {
+
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+        return false;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent e) {
+
+    }
+
+    @Override
+    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+        return false;
+    }
+
+    private ObjectAnimator getScaleAmin() {
+        if (scaleAmin == null) {
+            scaleAmin = ObjectAnimator.ofFloat(this, "scalePre", 0, 1);
+        }
+        return scaleAmin;
+    }
+
+    public float getScalePre() {
+        return scalePre;
+    }
+
+    public void setScalePre(float scalePre) {
+        this.scalePre = scalePre;
+        postInvalidate();
     }
 }
