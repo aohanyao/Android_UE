@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.jc.adv.l10.ui.TagLayoutV2 xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#03a4f9"
+    tools:context=".MainActivity">
+
+
+    <com.jc.adv.l10.ui.TagChildView
+        style="@style/TagTagChildViewStyle"
+        android:text="南头检查站" />
+
+    <com.jc.adv.l10.ui.TagChildView
+        style="@style/TagTagChildViewStyle"
+        android:text="红树林" />
+
+    <com.jc.adv.l10.ui.TagChildView
+        style="@style/TagTagChildViewStyle"
+        android:text="滨海之窗" />
+
+    <com.jc.adv.l10.ui.TagChildView
+        style="@style/TagTagChildViewStyle"
+        android:text="深大" />
+
+    <com.jc.adv.l10.ui.TagChildView
+        style="@style/TagTagChildViewStyle"
+        android:text="科苑" />
+
+    <com.jc.adv.l10.ui.TagChildView
+        style="@style/TagTagChildViewStyle"
+        android:text="海南路" />
+
+    <com.jc.adv.l10.ui.TagChildView
+        style="@style/TagTagChildViewStyle"
+        android:text="黑龙江" />
+
+    <com.jc.adv.l10.ui.TagChildView
+        style="@style/TagTagChildViewStyle"
+        android:text="北京天安门" />
+
+    <com.jc.adv.l10.ui.TagChildView
+        style="@style/TagTagChildViewStyle"
+        android:text="万里长城" />
+
+    <com.jc.adv.l10.ui.TagChildView
+        style="@style/TagTagChildViewStyle"
+        android:text="欢乐谷" />
+
+    <com.jc.adv.l10.ui.TagChildView
+        style="@style/TagTagChildViewStyle"
+        android:text="锦绣中华" />
+
+    <com.jc.adv.l10.ui.TagChildView
+        style="@style/TagTagChildViewStyle"
+        android:text="世界之窗" />
+
+    <com.jc.adv.l10.ui.TagChildView
+        style="@style/TagTagChildViewStyle"
+        android:text="海岸城" />
+
+    <com.jc.adv.l10.ui.TagChildView
+        style="@style/TagTagChildViewStyle"
+        android:text="梧桐树" />
+
+    <com.jc.adv.l10.ui.TagChildView
+        style="@style/TagTagChildViewStyle"
+        android:text="巴黎铁塔" />
+
+
+    <!--<com.jc.adv.l10.ui.SquareImageView
+        android:layout_width="200dp"
+        android:src="@drawable/icon_android_road"
+        android:layout_height="300dp" />-->
+</com.jc.adv.l10.ui.TagLayoutV2>
