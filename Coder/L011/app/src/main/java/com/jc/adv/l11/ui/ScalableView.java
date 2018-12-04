@@ -35,6 +35,8 @@ public class ScalableView extends View implements GestureDetector.OnDoubleTapLis
 
     private float mOffsetX;
     private float mOffsetY;
+    private float mOriginalOffsetX;
+    private float mOriginalOffsetY;
 
     private boolean isBig = false;
 
@@ -42,6 +44,8 @@ public class ScalableView extends View implements GestureDetector.OnDoubleTapLis
 
     private float scalePre = 0;
     private ObjectAnimator scaleAmin;
+
+    private float tempScale = 1.5f;
 
 
     public ScalableView(Context context) {
@@ -64,8 +68,8 @@ public class ScalableView extends View implements GestureDetector.OnDoubleTapLis
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         // 定义两个中间值
-        mOffsetX = (getWidth() - mImageSize) / 2;
-        mOffsetY = (getHeight() - mImageSize) / 2;
+        mOriginalOffsetX = (getWidth() - mImageSize) / 2;
+        mOriginalOffsetY = (getHeight() - mImageSize) / 2;
 
         // 两种缩放方式：
         // 1. 左右贴满，上下留白(矮胖)
@@ -75,10 +79,10 @@ public class ScalableView extends View implements GestureDetector.OnDoubleTapLis
         if (((float) mBitmap.getWidth() / mBitmap.getHeight()) > (getWidth() / getHeight())) {
             // 矮胖的情况下，最小就是 View除以bitmap的宽度
             mMixScale = (float) getWidth() / mBitmap.getWidth();
-            mMaxScale = (float) getHeight() / mBitmap.getHeight();
+            mMaxScale = (float) getHeight() / mBitmap.getHeight() * tempScale;
         } else {
             mMaxScale = (float) getWidth() / mBitmap.getWidth();
-            mMixScale = (float) getHeight() / mBitmap.getHeight();
+            mMixScale = (float) getHeight() / mBitmap.getHeight() * tempScale;
         }
 
 
@@ -100,13 +104,16 @@ public class ScalableView extends View implements GestureDetector.OnDoubleTapLis
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        // 进行触摸偏移
+        canvas.translate(mOffsetX, mOffsetY);
+
 
         float scale = mMixScale + ((mMaxScale - mMixScale) * scalePre);
 
         //缩放
         canvas.scale(scale, scale, getWidth() / 2, getHeight() / 2);
         // 居中绘制 图片
-        canvas.drawBitmap(mBitmap, mOffsetX, mOffsetY, mPaint);
+        canvas.drawBitmap(mBitmap, mOriginalOffsetX, mOriginalOffsetY, mPaint);
     }
 
     @Override
@@ -127,6 +134,8 @@ public class ScalableView extends View implements GestureDetector.OnDoubleTapLis
             getScaleAmin().start();
         } else {
             // 从大到小
+//            mOffsetY=0;
+//            mOffsetX=0;
             getScaleAmin().reverse();
         }
         return false;
@@ -155,6 +164,18 @@ public class ScalableView extends View implements GestureDetector.OnDoubleTapLis
 
     @Override
     public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+        if (isBig) {// 在放大的状态下才进行拖动
+            //进行了滚动
+            // 以(0,0)为原点
+            mOffsetX -= distanceX;
+            mOffsetY -= distanceY;
+            // 边界判断
+            // 最右不能小于图片的宽度减去View的宽度除以二，最左不能大于图片的宽度减去View的宽度除以二
+            // 最上和最下是一个道理
+            // 2018年12月04日22:33:56 明天进行复刻
+            postInvalidate();
+        }
+
         return false;
     }
 
