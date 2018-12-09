@@ -164,6 +164,8 @@ public class ScalableView extends View implements GestureDetector.OnDoubleTapLis
 
     @Override
     public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+        // distanceX 负数为 向右边拖动，为正数为向左边拖动
+        // 当前点为(0,0),向左边不得小于 -offsetLimit 的距离，向右不得大于 offsetLimit
         if (isBig) {// 在放大的状态下才进行拖动
             //进行了滚动
             // 以(0,0)为原点
@@ -172,11 +174,36 @@ public class ScalableView extends View implements GestureDetector.OnDoubleTapLis
             // 边界判断
             // 最右不能小于图片的宽度减去View的宽度除以二，最左不能大于图片的宽度减去View的宽度除以二
             // 最上和最下是一个道理
-            // 2018年12月04日22:33:56 明天进行复刻
+            // TODO 2018年12月04日22:33:56 明天进行复刻
+            handlerPort();
+
+
             postInvalidate();
         }
 
         return false;
+    }
+
+    /**
+     * 处理边界情况
+     */
+    private void handlerPort() {
+        float offsetLimitX = (mBitmap.getWidth() * mMaxScale - getWidth()) / 2;
+        if (mOffsetX <= -offsetLimitX) {
+            mOffsetX = Math.max(mOffsetX, -offsetLimitX);
+        }
+        if (mOffsetX >= offsetLimitX) {
+            mOffsetX = Math.min(mOffsetX, offsetLimitX);
+        }
+
+        // 上下边界的判定
+        float offsetLimitY = (mBitmap.getHeight() * mMaxScale - getHeight()) / 2;
+        if (mOffsetY <= -offsetLimitY) {
+            mOffsetY = Math.max(mOffsetY, -offsetLimitY);
+        }
+        if (mOffsetY >= offsetLimitY) {
+            mOffsetY = Math.min(mOffsetY, offsetLimitY);
+        }
     }
 
     @Override
@@ -202,6 +229,7 @@ public class ScalableView extends View implements GestureDetector.OnDoubleTapLis
 
     public void setScalePre(float scalePre) {
         this.scalePre = scalePre;
+        handlerPort();
         postInvalidate();
     }
 }
