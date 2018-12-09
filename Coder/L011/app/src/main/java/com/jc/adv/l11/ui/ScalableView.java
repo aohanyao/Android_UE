@@ -80,9 +80,9 @@ public class ScalableView extends View implements GestureDetector.OnDoubleTapLis
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         // 定义两个中间值
-//        mOriginalOffsetX = (getWidth() - mImageSize) / 2;
+//        mOffsetX = (getWidth() - mImageSize) / 2;
         mBitmatOriginalOffsetX = (getWidth() - mImageSize) / 2;
-//        mOriginalOffsetY = (getHeight() - mImageSize) / 2;
+//        mOffsetX = (getHeight() - mImageSize) / 2;
         mBitmatOriginalOffsetY = (getHeight() - mImageSize) / 2;
 
         // 两种缩放方式：
@@ -148,8 +148,11 @@ public class ScalableView extends View implements GestureDetector.OnDoubleTapLis
         Log.e(TAG, "onDoubleTapEvent: " + e.getX());
 
 
+        // 从小到大
         if (isBig) {
-            // 从小到大
+            // 中心点  TODO 这个公式还不是很清楚，需要进行更深一步的理解
+            mOriginOffsetX = (e.getX() - getWidth() / 2f) - (e.getX() - getWidth() / 2) * mMaxScale / mMixScale;
+            mOriginOffsetY = (e.getY() - getHeight() / 2f) - (e.getY() - getHeight() / 2) * mMaxScale / mMixScale;
 //            Log.e(TAG, "onDoubleTap: " + mOffsetX);
             getScaleAmin().start();
         } else {
@@ -162,21 +165,6 @@ public class ScalableView extends View implements GestureDetector.OnDoubleTapLis
 
     @Override
     public boolean onDoubleTapEvent(MotionEvent e) {
-
-//        if (!isBig) {
-//            switch (e.getActionMasked()) {
-//                case MotionEvent.ACTION_DOWN:
-//                    mDownX = e.getX();
-//                    mDownY = e.getY();
-//                    break;
-//                case MotionEvent.ACTION_UP:
-////                    int offsetX =
-//                    mOffsetX = e.getX();
-//                    mOriginOffsetY = e.getY();
-//                    break;
-//            }
-//        }
-
 
         return false;
     }
