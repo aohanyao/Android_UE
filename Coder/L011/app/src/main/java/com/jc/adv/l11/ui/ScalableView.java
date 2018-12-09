@@ -36,6 +36,8 @@ public class ScalableView extends View implements GestureDetector.OnDoubleTapLis
     private float mOffsetX;
     private float mOffsetY;
     private float mOriginalOffsetX;
+    private float mBitmatOriginalOffsetX;
+    private float mBitmatOriginalOffsetY;
     private float mOriginalOffsetY;
 
     private boolean isBig = false;
@@ -69,7 +71,9 @@ public class ScalableView extends View implements GestureDetector.OnDoubleTapLis
         super.onSizeChanged(w, h, oldw, oldh);
         // 定义两个中间值
         mOriginalOffsetX = (getWidth() - mImageSize) / 2;
+        mBitmatOriginalOffsetX = (getWidth() - mImageSize) / 2;
         mOriginalOffsetY = (getHeight() - mImageSize) / 2;
+        mBitmatOriginalOffsetY = (getHeight() - mImageSize) / 2;
 
         // 两种缩放方式：
         // 1. 左右贴满，上下留白(矮胖)
@@ -105,7 +109,7 @@ public class ScalableView extends View implements GestureDetector.OnDoubleTapLis
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         // 进行触摸偏移
-        canvas.translate(mOffsetX, mOffsetY);
+        canvas.translate(mOffsetX * scalePre, mOffsetY * scalePre);
 
 
         float scale = mMixScale + ((mMaxScale - mMixScale) * scalePre);
@@ -113,7 +117,7 @@ public class ScalableView extends View implements GestureDetector.OnDoubleTapLis
         //缩放
         canvas.scale(scale, scale, getWidth() / 2, getHeight() / 2);
         // 居中绘制 图片
-        canvas.drawBitmap(mBitmap, mOriginalOffsetX, mOriginalOffsetY, mPaint);
+        canvas.drawBitmap(mBitmap, mBitmatOriginalOffsetX, mBitmatOriginalOffsetY, mPaint);
     }
 
     @Override
@@ -136,6 +140,7 @@ public class ScalableView extends View implements GestureDetector.OnDoubleTapLis
             // 从大到小
 //            mOffsetY=0;
 //            mOffsetX=0;
+            // 进行回滚，然后进行X轴的变化
             getScaleAmin().reverse();
         }
         return false;
