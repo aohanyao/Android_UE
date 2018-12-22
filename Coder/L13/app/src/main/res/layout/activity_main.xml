@@ -7,7 +7,7 @@
     android:background="#ddd"
     tools:context=".MainActivity">
 
-    <com.jc.adv.l13.view.MultiTouchPaintView
+    <com.jc.adv.l13.view.MultiTouchView2
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
