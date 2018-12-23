@@ -19,13 +19,12 @@ import android.widget.OverScroller;
  * 3. 判断事件拦截（VelocityTracker，速度追踪器）
  * 4. 监听touch_move事件（onInterceptTouchEvent）
  * 5. 使用速度追踪器追踪当前手指滑动的速度
- *    5.1 ViewConfiguration获取相关的配置
- *    5.2 做滑动距离的判断，速度追踪器是用来计算我滑动的距离的，
- *        这样就不用自己来做滑动距离的判断。
+ * 5.1 ViewConfiguration获取相关的配置
+ * 5.2 做滑动距离的判断，速度追踪器是用来计算我滑动的距离的，
+ * 这样就不用自己来做滑动距离的判断。
  * 6. 使用OverScroller进行动态滑动
- *    computeScroll这个方法在每一帧绘制的时候都会进行调用，
+ * computeScroll这个方法在每一帧绘制的时候都会进行调用，
  * ----------------------------------------------
- *
  */
 public class TowPageViewPager extends ViewGroup {
 
