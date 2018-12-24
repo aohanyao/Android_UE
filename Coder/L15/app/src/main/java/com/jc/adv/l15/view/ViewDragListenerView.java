@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * view 拖拽
  */
-public class ViewDragHelper extends ViewGroup implements View.OnDragListener {
+public class ViewDragListenerView extends ViewGroup implements View.OnDragListener {
     private final int ROW = 2;
     private final int COLUMN = 3;
 
@@ -23,7 +23,7 @@ public class ViewDragHelper extends ViewGroup implements View.OnDragListener {
      */
     private List<View> mChildViews = new LinkedList<>();
 
-    public ViewDragHelper(Context context, AttributeSet attrs) {
+    public ViewDragListenerView(Context context, AttributeSet attrs) {
         super(context, attrs);
         setChildrenDrawingOrderEnabled(true);
     }
