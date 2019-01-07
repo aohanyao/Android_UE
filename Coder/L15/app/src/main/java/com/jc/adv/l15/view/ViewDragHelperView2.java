@@ -113,7 +113,8 @@ public class ViewDragHelperView2 extends ViewGroup {
 
         @Override
         public boolean tryCaptureView(@NonNull View view, int i) {
-            return true;
+            // 没有View在动画的时候，才进行抓取
+            return !mViewDragHelper.continueSettling(true);
         }
 
         @Override
